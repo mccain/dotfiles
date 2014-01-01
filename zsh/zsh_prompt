@@ -1,0 +1,43 @@
+# Color shortcuts
+red=$fg[red]
+yellow=$fg[yellow]
+green=$fg[green]
+white=$fg[white]
+blue=$fg[blue]
+RED=$fg_bold[red]
+YELLOW=$fg_bold[yellow]
+GREEN=$fg_bold[green]
+WHITE=$fg_bold[white]
+BLUE=$fg_bold[blue]
+
+# Format for git_prompt_info()
+### ZSH_THEME_GIT_PROMPT_PREFIX=" %{$YELLOW%}<[$(git_prompt_short_sha)] "
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$YELLOW%}<"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$YELLOW%}>%{$reset_color%}"
+
+# Format for parse_git_dirty()
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$RED%}(*)"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+# Format for git_prompt_status()
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$RED%}unmerged "
+ZSH_THEME_GIT_PROMPT_DELETED="%{$RED%}deleted "
+ZSH_THEME_GIT_PROMPT_RENAMED="%{$YELLOW%}renamed "
+ZSH_THEME_GIT_PROMPT_MODIFIED="%{$YELLOW%}modified "
+ZSH_THEME_GIT_PROMPT_ADDED="%{$GREEN%}added "
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$WHITE%}untracked "
+
+# Format for git_prompt_ahead()
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$RED%}(!)"
+
+# Format for git_prompt_long_sha() and git_prompt_short_sha()
+#ZSH_THEME_GIT_PROMPT_SHA_BEFORE=" %{$WHITE%}[%{$YELLOW%}"
+#ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$WHITE%}]"
+ZSH_THEME_GIT_PROMPT_SHA_BEFORE=""
+ZSH_THEME_GIT_PROMPT_SHA_AFTER=""
+
+# PROMPT="%{$fg[blue]%}%n%{$reset_color%}@%m:%{$fg[green]%}%1~%{$reset_color%}%# "
+# RPROMPT="%{$fg[yellow]%}[%?]%{$fg[green]%}%~%{$reset_color%}"
+# Changes for git plugin:
+PROMPT='%{$blue%}%n%{$reset_color%}@%m:%{$green%}%1~$(git_prompt_info)%{$reset_color%}%# '
+RPROMPT='$(git_prompt_status)%{$yellow%}[%?]%{$green%}%~%{$reset_color%}'

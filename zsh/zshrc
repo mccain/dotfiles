@@ -1,0 +1,45 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/config/oh-my-zsh
+CONFIG=$HOME/config/zsh
+
+# Set to this to use case-sensitive completion
+CASE_SENSITIVE="true"
+
+# Comment this out to disable bi-weekly auto-update checks
+DISABLE_AUTO_UPDATE="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# ZSH Stuff
+autoload -U compinit promptinit
+compinit
+promptinit
+
+autoload -U colors && colors
+
+# For autocompletion with an arrow-key driven interface:
+zstyle ':completion:*' menu select
+
+# For autocompletion of command line switches for aliases
+setopt completealiases
+
+# Other configuration
+export EDITOR="vim"
+export SVN_EDITOR="vim"
+export GIT_EDITOR="vim"
+bindkey -e
+umask 0077
+
+# Prompt configuration
+source $CONFIG/zsh_prompt
+
+# History
+source $CONFIG/zsh_history
+
+# Aliases
+source $CONFIG/zsh_aliases

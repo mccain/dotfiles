@@ -1,0 +1,10 @@
+! Switch Caps Lock for Left Shift, LShift for LCtrl and LCtrl for Caps Lock
+remove Lock = Caps_Lock
+remove Shift = Shift_L
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Shift_L = Control_L
+keysym Caps_Lock = Shift_L
+add Lock = Caps_Lock
+add Shift = Shift_L
+add Control = Control_L

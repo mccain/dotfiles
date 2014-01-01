@@ -1,0 +1,348 @@
+" Plugins to look at:
+" http://vim.wikia.com/wiki/Use_Vim_like_an_IDE
+" https://github.com/Lokaltog/powerline
+" http://kien.github.com/ctrlp.vim/
+
+
+" The index of this vimrc is based on :options
+"  0. Others
+"  1. Important
+"  2. Moving around, searching and patterns
+"  3. Tags
+"  4. Displaying text
+"  5. Syntax, highlighting and spelling
+"  6. Multiple windows
+"  7. Multiple tab pages
+"  8. Terminal
+"  9. Using the mouse
+" 10. GUI
+" 11. Printing
+" 12. Messages and info
+" 13. Selecting text
+" 14. Editing text
+" 15. Tabs and indenting
+" 16. Folding
+" 17. Diff mode
+" 18. Mapping
+" 19. Reading and writing files
+" 20. The swap file
+" 21. Command line editing
+" 22. Executing external commands
+" 23. Running make and jumping to errors
+" 24. Language specific
+" 25. Multi-byte characters
+" 26. Various
+
+" ---------------------------------------------------------------------------
+"  0. Others
+" ---------------------------------------------------------------------------
+" Vundle setup (https://github.com/gmarik/vundle)
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+"" https://github.com/gmarik/vundle
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"Bundle 'jcf/vim-latex'
+"" https://github.com/tpope/vim-surround
+Bundle 'tpope/vim-surround'
+"" https://github.com/kien/ctrlp.vim
+Bundle 'kien/ctrlp.vim'
+"" https://github.com/jnurmine/Zenburn
+Bundle 'jnurmine/Zenburn'
+"" https://github.com/altercation/vim-colors-solarized
+Bundle 'altercation/vim-colors-solarized'
+"" https://github.com/Raimondi/delimitMate
+Bundle 'Raimondi/delimitMate'
+"" https://github.com/Lokaltog/vim-easymotion
+Bundle 'Lokaltog/vim-easymotion'
+"" TODO: Look at...
+"" https://github.com/Lokaltog/powerline
+"" https://github.com/Shougo/neocomplcache.vim
+"" https://github.com/scrooloose/syntastic
+"" https://github.com/bitc/lushtags
+"" http://majutsushi.github.io/tagbar/
+"" https://github.com/scrooloose/syntastic
+
+"" TODO: Others to look at...
+"" https://code.google.com/p/conque/
+
+" original repos on github
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'tpope/vim-rails.git'
+"" vim-scripts repos
+"Bundle 'L9'
+"Bundle 'FuzzyFinder'
+"" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+"Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Bundle 'vim-latex/vim-latex'
+set runtimepath-=~/.vim/bundle/vim-latex " Deactivate it
+"" ...
+
+" required!
+filetype plugin indent on
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+
+
+if has("syntax") || has("gui_running")
+	" Activamos el coloreado de sintaxis.
+	syntax on
+	"colorscheme on
+"	" Ponemos en rojo los espacios que hay al final de la linea.
+"	highlight WhitespaceEOL ctermbg=red guibg=red
+"	match WhitespaceEOL /\s\+$/
+endif
+
+
+let useSolarized = 1
+if $TERM == "rxvt-unicode-256color" || &t_Co >= 256 || has("gui_running")
+	if useSolarized
+		""""syntax enable
+		set background=dark
+		"""""let g:solarized_termcolors=256
+		"""so ~/.vim/bundle/vim-colors-solarized/autoload/togglebg.vim
+		" if $TERM == "rxvt-unicode-256color"
+		" 	" Set background transparency
+		" 	let g:solarized_termtrans=1
+		" endif
+		"When using ':set list' to see special characters:
+		" 'low' for dark, 'high' for red
+		let g:solarized_visibility = "normal"
+		colorscheme solarized
+		" To make :ToggleBG work with F5
+		call togglebg#map("")
+	else " use zenburn
+		"set t_Co=256
+		let g:zenburn_high_Contrast=1
+		let g:zenburn_alternative_Visual=1
+		colorscheme zenburn
+	endif
+else
+	colorscheme slate
+endif
+
+"Para ensamblador m88110, de Edu:
+au BufNewFile,BufRead *.ens set filetype=ens
+
+" autocmd BufWrite * mkview
+" autocmd BufRead * silent loadview
+if has("autocmd")
+	" Automatically save and show view (for folds, e.g.).
+	" To configure what is saved, use viewoptions
+	autocmd BufWrite * mkview
+	autocmd BufRead * silent loadview
+	" If current file is called '.vimrc', execute ':so $MYVIMRC' after write
+	autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+" vim-latex configuration
+let g:tex_flavor='latex'
+let g:Tex_ViewRule_pdf='zathura'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='pdf'
+let g:Imap_UsePlaceHolders = 0 " Avoid puting symbols such as <++> then typing
+
+"source ~/.vim/plugins/setcolors.vim
+
+"http://vim.wikia.com/wiki/Remove_unwanted_spaces
+
+""El idioma en español y desactivamos el corrector por defecto
+"setlocal spell spelllang=es
+"set nospell
+"" Mapeamos F7 para resaltar o no el corrector ortográfico.
+"map <F7> :set spell!<Bar>set spell?<CR>
+
+""FIWIFI
+" Only do this part when compiled with support for autocommands
+"if has("autocmd")
+"  augroup redhat
+"    " In text files, always limit the width of text to 78 characters
+"    autocmd BufRead *.txt set tw=78
+"    " When editing a file, always jump to the last cursor position
+"    autocmd BufReadPost *
+"    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+"    \   exe "normal! g'\"" |
+"    \ endif
+"  augroup END
+"endif
+
+" ---------------------------------------------------------------------------
+"  1. Important
+" ---------------------------------------------------------------------------
+set nocompatible " behave very Vi compatible (not advisable)
+
+" ---------------------------------------------------------------------------
+"  2. Moving around, searching and patterns
+" ---------------------------------------------------------------------------
+set incsearch " show match for partly typed search command
+set ignorecase " ignore case when using a search pattern
+set smartcase " override 'ignorecase' when pattern has upper case characters
+" Keep search pattern at the center of the screen:
+" nnoremap <silent> n nzz
+" nnoremap <silent> N Nzz
+" nnoremap <silent> * *zz
+" nnoremap <silent> # #zz
+" nnoremap <silent> g* g*zz
+" nnoremap <silent> g# g#zz
+
+" ---------------------------------------------------------------------------
+"  3. Tags
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+"  4. Displaying text
+" ---------------------------------------------------------------------------
+set number " show the line number for each line
+set scrolloff=2 "number of screen lines to show around the cursor
+set listchars=tab:▸\ ,eol:¬
+
+" ---------------------------------------------------------------------------
+"  5. Syntax, highlighting and spelling
+" ---------------------------------------------------------------------------
+set hlsearch " highlight all matches for the last used search pattern
+highlight WhitespaceEOL ctermbg=darkred  guibg=darkred
+match WhitespaceEOL /\s\+$/
+
+" ---------------------------------------------------------------------------
+"  6. Multiple windows
+" ---------------------------------------------------------------------------
+" Status bar always visible
+set laststatus=2 " 0, 1 or 2; when to use a status line for the last window
+				 " 2: Show a status line, even if there's only one Vim window
+set splitbelow " New windows below the current one
+set splitright " New windows to the right of the current one
+
+" ---------------------------------------------------------------------------
+"  7. Multiple tab pages
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+"  8. Terminal
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+"  9. Using the mouse
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 10. GUI
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 11. Printing
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 12. Messages and info
+" ---------------------------------------------------------------------------
+set showcmd " show (partial) command keys in the status line
+set showmode " display the current mode in the status line
+set ruler " show cursor position below each window
+set visualbell "use a visual bell instead of beeping
+
+" ---------------------------------------------------------------------------
+" 13. Selecting text
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 14. Editing text
+" ---------------------------------------------------------------------------
+set textwidth=80 " line length above which to break a line
+
+" ---------------------------------------------------------------------------
+" 15. Tabs and indenting
+" ---------------------------------------------------------------------------
+set tabstop=4 " number of spaces a <Tab> in the text stands for
+set shiftwidth=4 " number of spaces used for each step of (auto)indent
+set autoindent " automatically set the indent of a new line
+set showmatch " when inserting a bracket, briefly jump to its match
+set expandtab " expand <Tab> to spaces in Insert mode
+
+" ---------------------------------------------------------------------------
+" 16. Folding
+" ---------------------------------------------------------------------------
+set foldcolumn=1
+" function HasFoldedLine() " Function that checks is there are any folds
+" 	let lnum=1
+" 	while lnum <= line("$")
+" 		if (foldclosed(lnum) > -1)
+" 			return 1
+" 		endif
+" 		let lnum+=1
+" 	endwhile
+" 	return 0
+" endfunction
+" " fdc = foldcolumn
+" au CursorHold * if HasFoldedLine() == 1 | set fdc=1 | else |set fdc=0 | endif
+set foldmethod=manual	" Manually insert folds
+
+" ---------------------------------------------------------------------------
+" 17. Diff mode
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 18. Mapping
+" ---------------------------------------------------------------------------
+let mapleader="\<Space>" " Change Leader key from \ to space || <SPACE>
+"" Useful for stuff like: noremap <Leader>W :w !sudo tee % > /dev/null
+cmap w!! w !sudo tee % >/dev/null
+" Shortcut to rapidly toggle `set list`:
+nmap <leader>l :set list!<CR>
+
+" ---------------------------------------------------------------------------
+" 19. Reading and writing files
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 20. The swap file
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 21. Command line editing
+" ---------------------------------------------------------------------------
+set wildmenu " command-line completion shows a list of matches
+set wildchar=<TAB> " key that triggers command-line expansion
+" List of patterns to ignore files for file name completion
+set wildignore=*.o,*.core,*~,core,*.swp,#*# 
+set undofile "automatically save and restore undo history
+set undodir=~/.vim/undos
+
+" ---------------------------------------------------------------------------
+" 22. Executing external commands
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 23. Running make and jumping to errors
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 24. Language specific
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 25. Multi-byte characters
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" 26. Various
+" ---------------------------------------------------------------------------
+" List of words that specifies what to save for :mkview
+" set viewoptions=folds,options,cursor " <~ default
+set viewoptions=folds,cursor
+" Avoid entering in ExMode
+noremap Q <Nop>

@@ -1,0 +1,62 @@
+background yes
+out_to_console yes
+out_to_x no
+# Update interval in seconds
+update_interval 1
+
+template0		/home/USER/.xmonad/scripts/
+template1		/home/USER/.xmonad/icons/
+
+TEXT
+
+# Energetic emergency:
+${if_existing /sys/class/power_supply/BAT0/present}\
+${if_match "${acpiacadapter ACAD}" == "off-line"}\
+${if_match ${battery_percent} <= 5}\
+${blink ^bg(\#FF0000)}\
+${endif}\
+${endif}\
+${endif}\
+${if_up wlan0}\
+^i(${template1}wifi_02.xbm) \
+${wireless_essid wlan0} ^fg(\#295d72)| \
+^fg(\#81befb)\
+${endif}\
+${if_existing /sys/class/net/eth0/operstate up}\
+^i(${template1}net_wired.xbm) \
+^fg(\#295d72)| \
+^fg(\#81befb)\
+${endif}\
+${if_up wlan1}\
+^i(${template1}usb.xbm) \
+^i(${template1}wifi_02.xbm) \
+${wireless_essid wlan1} ^fg(\#295d72)| \
+^fg(\#81befb)\
+${endif}\
+${if_match "${acpiacadapter ACAD}" == "on-line"}\
+${if_existing /sys/class/power_supply/BAT0/present}\
+^i(${template1}ac_01.xbm) ${battery_percent}% \
+${else}\
+^fg(\#FF0000)\
+NO BATTERY \
+^i(${template1}ac_02.xbm) \
+${endif}\
+${else}\
+${if_match ${battery_percent} > 15}\
+${if_match ${battery_percent} > 35}\
+${if_match ${battery_percent} > 60}\
+^i(${template1}bat_full_02.xbm) ${battery_percent}% \
+${else}\
+^i(${template1}bat_low_02.xbm) ${battery_percent}% \
+${endif}\
+${else}\
+^i(${template1}bat_empty_02.xbm) ${battery_percent}% \
+${endif}\
+${else}\
+^fg(\#FF0000)^i(${template1}bat_empty_02.xbm) ${battery_percent}% \
+${endif}\
+${endif}\
+\
+^fg(\#295d72)| ^fg(\#81befb)^i(${template1}spkr_01.xbm) ${exec amixer get Master | tail -n 1 | awk '{print $6=="[off]"?$6:$4}'} \
+^fg(\#295d72)| ^fg(\#81befb)${time %d/%m/%Y} \
+^fg(\#295d72)| ^fg(\#81befb)^i(${template1}clock.xbm) ${time %R} 

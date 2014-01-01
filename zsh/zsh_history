@@ -1,0 +1,49 @@
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+SAVEHIST=$HISTSIZE
+HISTFILE="$HOME/.zsh_history"
+# http://zsh.sourceforge.net/Guide/zshguide02.html#l16
+# http://www.zsh.org/mla/users/2003/msg00335.html
+setopt   append_history       # multiple zsh's all append to same history file (rather than last
+                              # overwrites)  SET
+unsetopt bang_hist            # Perform textual history expansion, csh-style, treating '!' specially  SET
+unsetopt csh_junkie_history   # A history reference without an event specifier will always refer to
+                              # the previous command. Without this option, such a history reference
+                              # refers to the same event as the previous history reference, defaulting
+                              # to the previous command  UNSET
+setopt   extended_history     # Save each command's beginning timestamp and the duration (in seconds)
+                              # to the history file  UNSET
+unsetopt hist_allow_clobber   # Add '|' to output redirections in the history. This allows history
+                              # references to clobber files even when CLOBBER is unset  UNSET
+setopt 	 no_hist_beep         # Don't beep when attempt to access a history entry which isn't there  SET
+unsetopt hist_expire_dups_first  # If the internal history needs to be trimmed to add the current command
+                              # line, setting this option will cause the oldest history event that has
+                              # a duplicate to be lost before losing a unique event from the list  UNSET
+unsetopt hist_find_no_dups    # When searching for history entries in the line editor, do not display
+                              # duplicates of a line previously found, even if the duplicates are not
+                              # contiguous  UNSET
+unsetopt hist_ignore_all_dups # If a new command line being added to the history list duplicates an
+                              # older one, the older command is removed from the list (even if it is
+                              # not the previous event)  UNSET
+setopt   hist_ignore_dups     # Do not enter command lines into the history list if they are
+                              # duplicates of the previous event  UNSET
+unsetopt hist_ignore_space    # Remove command lines from the history list when the first character on
+                              # the line is a space, or when one of the expanded aliases contains a
+                              # leading space  UNSET
+unsetopt hist_no_functions    # Remove function definitions from the history list  UNSET
+unsetopt hist_no_store        # Remove the history (fc -l) command from the history list when invoked  UNSET
+setopt   hist_reduce_blanks   # Remove superfluous blanks from each command line being added to the
+                              # history list  UNSET
+unsetopt hist_save_no_dups    # When writing out the history file, older commands that duplicate newer
+                              # ones are omitted  UNSET
+setopt   hist_verify          # Don't execute a line with history expansion directly; reload the line
+                              # into the editing buffer  UNSET
+setopt   inc_append_history   # New history lines are added to the $HISTFILE incrementally (as soon as
+                              # they are entered), rather than waiting until the shell is killed  UNSET
+unsetopt share_history        # Import new commands from the history file and append typed commands to
+                              # the history file  UNSET
