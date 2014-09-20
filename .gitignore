@@ -1,3 +1,7 @@
+# Vim folders
 vim/bundle
 vim/undos
 vim/view
+
+# Users secret stuff
+extra
