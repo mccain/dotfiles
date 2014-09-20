@@ -60,13 +60,17 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'Raimondi/delimitMate'
 "" https://github.com/Lokaltog/vim-easymotion
 Bundle 'Lokaltog/vim-easymotion'
+"" https://github.com/scrooloose/syntastic
+Bundle 'scrooloose/syntastic'
+"" http://majutsushi.github.io/tagbar/
+Bundle 'majutsushi/tagbar'
+Bundle 'raichoo/haskell-vim'
 "" TODO: Look at...
+"" https://github.com/SirVer/ultisnips
 "" https://github.com/Lokaltog/powerline
 "" https://github.com/Shougo/neocomplcache.vim
-"" https://github.com/scrooloose/syntastic
 "" https://github.com/bitc/lushtags
-"" http://majutsushi.github.io/tagbar/
-"" https://github.com/scrooloose/syntastic
+"" https://github.com/eagletmt/neco-ghc
 
 "" TODO: Others to look at...
 "" https://code.google.com/p/conque/
@@ -83,7 +87,8 @@ Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'git://git.wincent.com/command-t.git'
 "Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Bundle 'vim-latex/vim-latex'
-set runtimepath-=~/.vim/bundle/vim-latex " Deactivate it
+Bundle 'kchmck/vim-coffee-script'
+"" set runtimepath-=~/.vim/bundle/vim-latex " Deactivate it
 "" ...
 
 " required!
@@ -109,17 +114,10 @@ if has("syntax") || has("gui_running")
 endif
 
 
-let useSolarized = 1
-if $TERM == "rxvt-unicode-256color" || &t_Co >= 256 || has("gui_running")
+let useSolarized = 0
+if $TERM == "xterm-256color" || &t_Co >= 256 || has("gui_running")
 	if useSolarized
-		""""syntax enable
 		set background=dark
-		"""""let g:solarized_termcolors=256
-		"""so ~/.vim/bundle/vim-colors-solarized/autoload/togglebg.vim
-		" if $TERM == "rxvt-unicode-256color"
-		" 	" Set background transparency
-		" 	let g:solarized_termtrans=1
-		" endif
 		"When using ':set list' to see special characters:
 		" 'low' for dark, 'high' for red
 		let g:solarized_visibility = "normal"
@@ -139,6 +137,9 @@ endif
 "Para ensamblador m88110, de Edu:
 au BufNewFile,BufRead *.ens set filetype=ens
 
+" Markdown!
+au BufRead,BufNewFile *.md set filetype=markdown
+
 " autocmd BufWrite * mkview
 " autocmd BufRead * silent loadview
 if has("autocmd")
@@ -152,12 +153,12 @@ endif
 
 " vim-latex configuration
 let g:tex_flavor='latex'
-let g:Tex_ViewRule_pdf='zathura'
+" let g:Tex_ViewRule_pdf='zathura'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 let g:Imap_UsePlaceHolders = 0 " Avoid puting symbols such as <++> then typing
 
-"source ~/.vim/plugins/setcolors.vim
+source ~/.vim/plugins/setcolors.vim
 
 "http://vim.wikia.com/wiki/Remove_unwanted_spaces
 
@@ -209,7 +210,7 @@ set smartcase " override 'ignorecase' when pattern has upper case characters
 " ---------------------------------------------------------------------------
 set number " show the line number for each line
 set scrolloff=2 "number of screen lines to show around the cursor
-set listchars=tab:▸\ ,eol:¬
+"set listchars=tab:▸\ ,eol:¬
 
 " ---------------------------------------------------------------------------
 "  5. Syntax, highlighting and spelling
@@ -258,6 +259,7 @@ set visualbell "use a visual bell instead of beeping
 " ---------------------------------------------------------------------------
 " 13. Selecting text
 " ---------------------------------------------------------------------------
+set backspace=2 " Delete in insert made!
 
 " ---------------------------------------------------------------------------
 " 14. Editing text
