@@ -36,35 +36,35 @@
 " ---------------------------------------------------------------------------
 "  0. Others
 " ---------------------------------------------------------------------------
-" Vundle setup (https://github.com/gmarik/vundle)
+" Vundle setup (https://github.com/gmarik/Vundle.vim)
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
 "" https://github.com/gmarik/vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
-"Bundle 'jcf/vim-latex'
+"Plugin 'jcf/vim-latex'
 "" https://github.com/tpope/vim-surround
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 "" https://github.com/kien/ctrlp.vim
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 "" https://github.com/jnurmine/Zenburn
-Bundle 'jnurmine/Zenburn'
+Plugin 'jnurmine/Zenburn'
 "" https://github.com/altercation/vim-colors-solarized
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 "" https://github.com/Raimondi/delimitMate
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 "" https://github.com/Lokaltog/vim-easymotion
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 "" https://github.com/scrooloose/syntastic
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 "" http://majutsushi.github.io/tagbar/
-Bundle 'majutsushi/tagbar'
-Bundle 'raichoo/haskell-vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'raichoo/haskell-vim'
 "" TODO: Look at...
 "" https://github.com/SirVer/ultisnips
 "" https://github.com/Lokaltog/powerline
@@ -76,29 +76,30 @@ Bundle 'raichoo/haskell-vim'
 "" https://code.google.com/p/conque/
 
 " original repos on github
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'tpope/vim-rails.git'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Plugin 'tpope/vim-rails.git'
 "" vim-scripts repos
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
+"Plugin 'L9'
+"Plugin 'FuzzyFinder'
 "" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-"Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
-Bundle 'vim-latex/vim-latex'
-Bundle 'kchmck/vim-coffee-script'
+"Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Plugin 'vim-latex/vim-latex'
+Plugin 'kchmck/vim-coffee-script'
 "" set runtimepath-=~/.vim/bundle/vim-latex " Deactivate it
 "" ...
 
 " required!
+call vundle#end()
 filetype plugin indent on
 "
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
