@@ -1,12 +1,11 @@
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias ls='ls -G'
+alias grep='grep -G'
+alias fgrep='fgrep -G'
+alias egrep='egrep -G'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias 0='setxkbmap es'
 alias dv='setxkbmap dvorak'
 alias dvi='setxkbmap us -variant dvorak-intl'
 alias xm='xmodmap ~/.Xmodmap'
@@ -23,10 +22,14 @@ alias term='urxvt &!'
 alias sa='exec ssh-agent zsh'
 alias sd='ssh-add'
 alias vi='vim'
+alias v='vim'
 alias z='zathura --fork'
 alias sizeinfo='du -csh *'
-alias font-change='~/scripts/font-change.sh'
-alias learn-dvorak='setxkbmap dvorak && dvorakng && setxkbmap es'
 
 alias suspend_pc='systemctl suspend'
 alias hibernate_pc='systemctl hibernate'
+
+function note_vim {
+d=$(date "+%Y%m%d").md
+vim $d
+}

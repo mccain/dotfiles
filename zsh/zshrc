@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/config/oh-my-zsh
-CONFIG=$HOME/config/zsh
+ZSH=$HOME/dotfiles/extra/oh-my-zsh
+CONFIG=$HOME/dotfiles/zsh
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -32,6 +32,7 @@ setopt completealiases
 export EDITOR="vim"
 export SVN_EDITOR="vim"
 export GIT_EDITOR="vim"
+export VIMRC="$HOME/.vimrc"
 bindkey -e
 umask 0077
 
@@ -43,3 +44,6 @@ source $CONFIG/zsh_history
 
 # Aliases
 source $CONFIG/zsh_aliases
+
+# Extras
+source $HOME/dotfiles/extra/zsh_extra
