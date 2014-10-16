@@ -5,7 +5,7 @@ wantedDotfiles=(git vim zsh)
 export DOTFILES=`dirname ${BASH_SOURCE}`
 
 function checkAndBackup() {
-    if [ -e $1 ]; then
+    if [[ -e $1 && ! -L $1 ]]; then
         echo " > Backing up $1"
         mv $1 ${1}.`date "+%Y%m%d%H%M%S"`.bak
     fi

@@ -2,4 +2,4 @@
 
 checkAndBackup $HOME/.Xmodmap
 
-ln -s $PWD/xmodmap/Xmodmap $HOME/.Xmodmap
+ln -sf $PWD/xmodmap/Xmodmap $HOME/.Xmodmap

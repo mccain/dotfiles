@@ -2,4 +2,4 @@
 
 checkAndBackup $HOME/.xmonad
 
-ln -s $PWD/xmonad $HOME/.xmonad
+ln -sf $PWD/xmonad $HOME/.xmonad

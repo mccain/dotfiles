@@ -3,5 +3,5 @@
 checkAndBackup $HOME/.gitconfig
 checkAndBackup $HOME/.gitignore
 
-ln -s $PWD/git/gitconfig $HOME/.gitconfig
-ln -s $PWD/git/gitignore $HOME/.gitignore
+ln -sf $PWD/git/gitconfig $HOME/.gitconfig
+ln -sf $PWD/git/gitignore $HOME/.gitignore
