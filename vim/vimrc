@@ -1,9 +1,3 @@
-" Plugins to look at:
-" http://vim.wikia.com/wiki/Use_Vim_like_an_IDE
-" https://github.com/Lokaltog/powerline
-" http://kien.github.com/ctrlp.vim/
-
-
 " The index of this vimrc is based on :options
 "  0. Others
 "  1. Important
@@ -41,55 +35,37 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle
-" required!
-"" https://github.com/gmarik/vundle
+" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
-"Plugin 'jcf/vim-latex'
-"" https://github.com/tpope/vim-surround
 Plugin 'tpope/vim-surround'
-"" https://github.com/kien/ctrlp.vim
 Plugin 'kien/ctrlp.vim'
-"" https://github.com/jnurmine/Zenburn
 Plugin 'jnurmine/Zenburn'
-"" https://github.com/altercation/vim-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
-"" https://github.com/Raimondi/delimitMate
 Plugin 'Raimondi/delimitMate'
-"" https://github.com/Lokaltog/vim-easymotion
 Plugin 'Lokaltog/vim-easymotion'
-"" https://github.com/scrooloose/syntastic
 Plugin 'scrooloose/syntastic'
-"" http://majutsushi.github.io/tagbar/
 Plugin 'majutsushi/tagbar'
+nmap <F9> :TagbarToggle<CR>
 Plugin 'raichoo/haskell-vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'vim-latex/vim-latex'
+"" set runtimepath-=~/.vim/bundle/vim-latex " Deactivate it
+" vim-latex configuration:
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_MultipleCompileFormats='pdf'
+let g:Imap_UsePlaceHolders = 0 " Avoid puting symbols such as <++> then typing
+Plugin 'nathanaelkane/vim-indent-guides'
+" Activate indent-guides with: <Leader>ig
+Plugin 'bling/vim-airline'
 "" TODO: Look at...
+"Plugin 'tpope/vim-fugitive'
 "" https://github.com/SirVer/ultisnips
-"" https://github.com/Lokaltog/powerline
 "" https://github.com/Shougo/neocomplcache.vim
 "" https://github.com/bitc/lushtags
 "" https://github.com/eagletmt/neco-ghc
-
-"" TODO: Others to look at...
-"" https://code.google.com/p/conque/
-
-" original repos on github
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'Lokaltog/vim-easymotion'
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Plugin 'tpope/vim-rails.git'
-"" vim-scripts repos
-"Plugin 'L9'
-"Plugin 'FuzzyFinder'
-"" non github repos
-"Plugin 'git://git.wincent.com/command-t.git'
-"Plugin 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
-Plugin 'vim-latex/vim-latex'
-Plugin 'kchmck/vim-coffee-script'
-"" set runtimepath-=~/.vim/bundle/vim-latex " Deactivate it
-"" ...
 
 " required!
 call vundle#end()
@@ -106,33 +82,35 @@ filetype plugin indent on
 
 
 if has("syntax") || has("gui_running")
-	" Activamos el coloreado de sintaxis.
-	syntax on
-	"colorscheme on
-"	" Ponemos en rojo los espacios que hay al final de la linea.
-"	highlight WhitespaceEOL ctermbg=red guibg=red
-"	match WhitespaceEOL /\s\+$/
+    " Activamos el coloreado de sintaxis.
+    syntax on
+    "colorscheme on
+"   " Ponemos en rojo los espacios que hay al final de la linea.
+"   highlight WhitespaceEOL ctermbg=red guibg=red
+"   match WhitespaceEOL /\s\+$/
 endif
 
 
 let useSolarized = 0
 if $TERM == "xterm-256color" || &t_Co >= 256 || has("gui_running")
-	if useSolarized
-		set background=dark
-		"When using ':set list' to see special characters:
-		" 'low' for dark, 'high' for red
-		let g:solarized_visibility = "normal"
-		colorscheme solarized
-		" To make :ToggleBG work with F5
-		call togglebg#map("")
-	else " use zenburn
-		"set t_Co=256
-		let g:zenburn_high_Contrast=1
-		let g:zenburn_alternative_Visual=1
-		colorscheme zenburn
-	endif
+    " To make :ToggleBG work with F5
+    call togglebg#map("<F5>")
+    if useSolarized
+        set background=dark
+        "When using ':set list' to see special characters:
+        " 'low' for dark, 'high' for red
+        let g:solarized_visibility = "normal"
+        let g:solarized_termcolors = 256
+        " let g:solarized_termcolors = 16
+        colorscheme solarized
+    else " use zenburn
+        "set t_Co=256
+        let g:zenburn_high_Contrast=1
+        let g:zenburn_alternative_Visual=1
+        colorscheme zenburn
+    endif
 else
-	colorscheme slate
+    colorscheme slate
 endif
 
 "Para ensamblador m88110, de Edu:
@@ -144,20 +122,13 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " autocmd BufWrite * mkview
 " autocmd BufRead * silent loadview
 if has("autocmd")
-	" Automatically save and show view (for folds, e.g.).
-	" To configure what is saved, use viewoptions
-	autocmd BufWrite * mkview
-	autocmd BufRead * silent loadview
-	" If current file is called '.vimrc', execute ':so $MYVIMRC' after write
-	autocmd bufwritepost .vimrc source $MYVIMRC
+    " Automatically save and show view (for folds, e.g.).
+    " To configure what is saved, use viewoptions
+    autocmd BufWrite * mkview
+    autocmd BufRead * silent loadview
+    " If current file is called '.vimrc', execute ':so $MYVIMRC' after write
+    autocmd bufwritepost .vimrc source $MYVIMRC
 endif
-
-" vim-latex configuration
-let g:tex_flavor='latex'
-" let g:Tex_ViewRule_pdf='zathura'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf'
-let g:Imap_UsePlaceHolders = 0 " Avoid puting symbols such as <++> then typing
 
 source ~/.vim/plugins/setcolors.vim
 
@@ -225,7 +196,7 @@ match WhitespaceEOL /\s\+$/
 " ---------------------------------------------------------------------------
 " Status bar always visible
 set laststatus=2 " 0, 1 or 2; when to use a status line for the last window
-				 " 2: Show a status line, even if there's only one Vim window
+                 " 2: Show a status line, even if there's only one Vim window
 set splitbelow " New windows below the current one
 set splitright " New windows to the right of the current one
 
@@ -281,18 +252,18 @@ set expandtab " expand <Tab> to spaces in Insert mode
 " ---------------------------------------------------------------------------
 set foldcolumn=1
 " function HasFoldedLine() " Function that checks is there are any folds
-" 	let lnum=1
-" 	while lnum <= line("$")
-" 		if (foldclosed(lnum) > -1)
-" 			return 1
-" 		endif
-" 		let lnum+=1
-" 	endwhile
-" 	return 0
+"   let lnum=1
+"   while lnum <= line("$")
+"       if (foldclosed(lnum) > -1)
+"           return 1
+"       endif
+"       let lnum+=1
+"   endwhile
+"   return 0
 " endfunction
 " " fdc = foldcolumn
 " au CursorHold * if HasFoldedLine() == 1 | set fdc=1 | else |set fdc=0 | endif
-set foldmethod=manual	" Manually insert folds
+set foldmethod=manual   " Manually insert folds
 
 " ---------------------------------------------------------------------------
 " 17. Diff mode
@@ -321,7 +292,7 @@ nmap <leader>l :set list!<CR>
 set wildmenu " command-line completion shows a list of matches
 set wildchar=<TAB> " key that triggers command-line expansion
 " List of patterns to ignore files for file name completion
-set wildignore=*.o,*.core,*~,core,*.swp,#*# 
+set wildignore=*.o,*.core,*~,core,*.swp,#*#
 set undofile "automatically save and restore undo history
 set undodir=~/.vim/undos
 
