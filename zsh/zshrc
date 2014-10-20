@@ -47,3 +47,4 @@ source $CONFIG/zsh_aliases
 
 # Extras
 source $HOME/dotfiles/extra/zsh_extra
+source $HOME/dotfiles/extra/z/z.sh
