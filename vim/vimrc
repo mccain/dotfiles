@@ -41,8 +41,6 @@ Plugin 'gmarik/Vundle.vim'
 " My Bundles here:
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
@@ -65,6 +63,14 @@ let g:Imap_UsePlaceHolders = 0 " Avoid puting symbols such as <++> then typing
 Plugin 'nathanaelkane/vim-indent-guides'
 " Activate indent-guides with: <Leader>ig
 Plugin 'bling/vim-airline'
+
+" Colors
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'jnurmine/Zenburn'
+Plugin 'morhetz/gruvbox'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'tomasr/molokai'
+
 "" TODO: Look at...
 "Plugin 'tpope/vim-fugitive'
 "" https://github.com/SirVer/ultisnips
@@ -108,11 +114,9 @@ if $TERM == "xterm-256color" || &t_Co >= 256 || has("gui_running")
         let g:solarized_termcolors = 256
         " let g:solarized_termcolors = 16
         colorscheme solarized
-    else " use zenburn
-        "set t_Co=256
-        let g:zenburn_high_Contrast=1
-        let g:zenburn_alternative_Visual=1
-        colorscheme zenburn
+    else
+        set background=dark
+        colorscheme gruvbox
     endif
 else
     colorscheme slate
