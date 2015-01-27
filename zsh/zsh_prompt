@@ -41,3 +41,17 @@ ZSH_THEME_GIT_PROMPT_SHA_AFTER=""
 # Changes for git plugin:
 PROMPT='%{$blue%}%n%{$reset_color%}@%m:%{$green%}%1~$(git_prompt_info)%{$reset_color%}%# '
 RPROMPT='$(git_prompt_status)%{$yellow%}[%?]%{$green%}%~%{$reset_color%}'
+
+# Cabal sandbox status
+function cabal_sandbox_info() {
+    cabal_files=(*.cabal(N))
+    if [ $#cabal_files -gt 0 ]; then
+        if [ -f cabal.sandbox.config ]; then
+            echo "%{$fg[green]%}sandboxed%{$reset_color%}"
+        else
+            echo "%{$fg[red]%}not sandboxed%{$reset_color%}"
+        fi
+    fi
+}
+
+RPROMPT="\$(cabal_sandbox_info) $RPROMPT"
