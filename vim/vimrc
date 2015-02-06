@@ -54,14 +54,11 @@ Plugin 'majutsushi/tagbar'
 nmap <F9> :TagbarToggle<CR>
 Plugin 'raichoo/haskell-vim'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'vim-latex/vim-latex'
-"" set runtimepath-=~/.vim/bundle/vim-latex " Deactivate it
-" vim-latex configuration:
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_MultipleCompileFormats='pdf'
-let g:Imap_UsePlaceHolders = 0 " Avoid puting symbols such as <++> then typing
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'nathanaelkane/vim-indent-guides'
+let g:LatexBox_latexmk_preview_continuously = 1
+let g:LatexBox_quickfix = 2
+let g:LatexBox_viewer="open -a /Applications/Skim.app"
 " Activate indent-guides with: <Leader>ig
 Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
