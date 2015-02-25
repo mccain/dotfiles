@@ -53,6 +53,8 @@ let g:syntastic_aggregate_errors = 1
 Plugin 'majutsushi/tagbar'
 nmap <F9> :TagbarToggle<CR>
 Plugin 'raichoo/haskell-vim'
+let g:haskell_indent_if = 0
+let g:haskell_indent_in = 0
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'nathanaelkane/vim-indent-guides'
