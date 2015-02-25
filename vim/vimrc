@@ -57,10 +57,10 @@ let g:haskell_indent_if = 0
 let g:haskell_indent_in = 0
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'nathanaelkane/vim-indent-guides'
 let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_quickfix = 2
 let g:LatexBox_viewer="open -a /Applications/Skim.app"
+Plugin 'nathanaelkane/vim-indent-guides'
 " Activate indent-guides with: <Leader>ig
 Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
@@ -73,7 +73,6 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'tomasr/molokai'
 
 "" TODO: Look at...
-"Plugin 'tpope/vim-fugitive'
 "" https://github.com/SirVer/ultisnips
 "" https://github.com/Shougo/neocomplcache.vim
 "" https://github.com/Valloric/YouCompleteMe
