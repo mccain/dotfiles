@@ -61,17 +61,6 @@ filetype plugin indent on
 " NOTE: comments after Bundle command are not allowed..
 " }
 
-
-if has("syntax") || has("gui_running")
-    " Activamos el coloreado de sintaxis.
-    syntax on
-    "colorscheme on
-"   " Ponemos en rojo los espacios que hay al final de la linea.
-"   highlight WhitespaceEOL ctermbg=red guibg=red
-"   match WhitespaceEOL /\s\+$/
-endif
-
-
 let useSolarized = 0
 if $TERM == "xterm-256color" || &t_Co >= 256 || has("gui_running")
     " To make :ToggleBG work with F5
@@ -92,14 +81,9 @@ else
     colorscheme slate
 endif
 
-"Para ensamblador m88110, de Edu:
-au BufNewFile,BufRead *.ens set filetype=ens
-
 " Markdown!
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" autocmd BufWrite * mkview
-" autocmd BufRead * silent loadview
 if has("autocmd")
     " Automatically save and show view (for folds, e.g.).
     " To configure what is saved, use viewoptions
@@ -110,28 +94,6 @@ if has("autocmd")
 endif
 
 source ~/.vim/plugins/setcolors.vim
-
-"http://vim.wikia.com/wiki/Remove_unwanted_spaces
-
-""El idioma en español y desactivamos el corrector por defecto
-"setlocal spell spelllang=es
-"set nospell
-"" Mapeamos F7 para resaltar o no el corrector ortográfico.
-"map <F7> :set spell!<Bar>set spell?<CR>
-
-""FIWIFI
-" Only do this part when compiled with support for autocommands
-"if has("autocmd")
-"  augroup redhat
-"    " In text files, always limit the width of text to 78 characters
-"    autocmd BufRead *.txt set tw=78
-"    " When editing a file, always jump to the last cursor position
-"    autocmd BufReadPost *
-"    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-"    \   exe "normal! g'\"" |
-"    \ endif
-"  augroup END
-"endif
 
 " :options {
 "  1. Important {
@@ -157,6 +119,7 @@ set scrolloff=2 "number of screen lines to show around the cursor
 "set listchars=tab:▸\ ,eol:¬
 " }
 "  5. Syntax, highlighting and spelling {
+syntax on
 set hlsearch " highlight all matches for the last used search pattern
 set colorcolumn=80 " show a column at the 80th char
 highlight WhitespaceEOL ctermbg=darkred  guibg=darkred
