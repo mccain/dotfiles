@@ -11,8 +11,5 @@ mkdir -p $DOTFILES/vim/undos
 mkdir -p $DOTFILES/vim/bundle
 
 Vundle=$DOTFILES/vim/bundle/Vundle.vim
-Zenburn=$DOTFILES/vim/bundle/Zenburn
 rm -rf $Vundle
-rm -rf $Zenburn
 git clone https://github.com/gmarik/Vundle.vim.git $Vundle
-git clone https://github.com/jnurmine/Zenburn $Zenburn
