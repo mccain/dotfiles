@@ -13,3 +13,6 @@ mkdir -p $DOTFILES/vim/bundle
 Vundle=$DOTFILES/vim/bundle/Vundle.vim
 rm -rf $Vundle
 git clone https://github.com/gmarik/Vundle.vim.git $Vundle
+
+# Install the plugins found in vimrc
+vim +PluginInstall +qall
