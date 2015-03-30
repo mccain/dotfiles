@@ -14,21 +14,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
 Plugin 'majutsushi/tagbar'
-nmap <F9> :TagbarToggle<CR>
 Plugin 'raichoo/haskell-vim'
-let g:haskell_indent_if = 0
-let g:haskell_indent_in = 0
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-let g:LatexBox_latexmk_preview_continuously = 1
-let g:LatexBox_quickfix = 2
-let g:LatexBox_viewer="open -a /Applications/Skim.app"
 Plugin 'nathanaelkane/vim-indent-guides'
 " Activate indent-guides with: <Leader>ig
 Plugin 'bling/vim-airline'
@@ -211,6 +200,32 @@ set undodir=~/.vim/undos
 " set viewoptions=folds,options,cursor " <~ default
 set viewoptions=folds,cursor
 " }
+" }
+
+" Plugin options {
+    " tpope/vim-fugitive {
+        nmap <leader>g :Gstatus<CR>
+    " }
+    " scrooloose/syntastic {
+        let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_auto_loc_list = 0
+        let g:syntastic_check_on_open = 0
+        let g:syntastic_check_on_wq = 0
+        let g:syntastic_aggregate_errors = 1
+    " }
+    " majutsushi/tagbar {
+        nmap <F9> :TagbarToggle<CR>
+    " }
+    " raichoo/haskell-vim {
+        let g:haskell_indent_if = 0
+        let g:haskell_indent_in = 0
+    " }
+    " LaTeX-Box-Team/LaTeX-Box {
+        let g:LatexBox_latexmk_preview_continuously = 1
+        let g:LatexBox_quickfix = 2
+        let g:LatexBox_viewer="open -a /Applications/Skim.app"
+        nmap <leader>L :LatexErrors<CR>
+    " }
 " }
 
 " vim: foldmethod=marker foldlevel=0 foldmarker={,}
