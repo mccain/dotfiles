@@ -52,8 +52,7 @@ filetype plugin indent on
 
 let useSolarized = 0
 if $TERM == "xterm-256color" || &t_Co >= 256 || has("gui_running")
-    " To make :ToggleBG work with F5
-    call togglebg#map("<F5>")
+    map <silent> <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
     if useSolarized
         set background=dark
         "When using ':set list' to see special characters:
