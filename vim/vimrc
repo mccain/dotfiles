@@ -181,6 +181,7 @@ let mapleader="\<Space>" " Change Leader key from \ to space || <SPACE>
 cmap w!! w !sudo tee % >/dev/null
 " Shortcut to rapidly toggle `set list`:
 nmap <leader>l :set list!<CR>
+nmap <silent> <leader>c :syntax sync fromstart<CR>
 " Avoid entering in ExMode
 noremap Q <Nop>
 " }
