@@ -119,8 +119,7 @@ set listchars=tab:▸\ ,trail:·,eol:¬
 syntax on
 set hlsearch " highlight all matches for the last used search pattern
 set colorcolumn=80 " show a column at the 80th char
-highlight WhitespaceEOL ctermbg=darkred  guibg=darkred
-match WhitespaceEOL /\s\+$/
+match Error /\s\+$/
 " }
 "  6. Multiple windows {
 " Status bar always visible
