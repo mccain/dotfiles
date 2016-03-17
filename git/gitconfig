@@ -2,6 +2,8 @@
     excludesfile = ~/.gitignore
 [color]
     ui = true
+[color "diff"]
+    meta = blue
 [push]
     default = simple
 [merge]
