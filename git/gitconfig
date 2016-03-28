@@ -15,6 +15,7 @@
     df = diff
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
     st = status
+    tl = tag --sort "v:refname"
     undo-commit = reset --soft 'HEAD^'
 [include]
     path = ~/dotfiles/extra/gitconfig_extra
