@@ -37,3 +37,14 @@ function note_vim {
 d=$(date "+%Y%m%d").md
 vim $d
 }
+
+alias dim='docker images'
+alias dip='docker-machine ip default'
+alias dme='eval "$(docker-machine env default)"'
+alias dps='docker ps'
+alias dstart="bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
+
+alias vh='vagrant halt'
+alias vpr='vagrant provision'
+alias vsh='vagrant ssh'
+alias vup='vagrant up'
