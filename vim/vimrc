@@ -53,18 +53,23 @@ filetype plugin indent on
 let useSolarized = 0
 if $TERM == "xterm-256color" || &t_Co >= 256 || has("gui_running")
     map <silent> <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-    if useSolarized
-        set background=dark
-        "When using ':set list' to see special characters:
-        " 'low' for dark, 'high' for red
-        let g:solarized_visibility = "normal"
-        let g:solarized_termcolors = 256
-        " let g:solarized_termcolors = 16
-        colorscheme solarized
-    else
-        set background=dark
-        colorscheme gruvbox
-    endif
+    try
+        if useSolarized
+            set background=dark
+            "When using ':set list' to see special characters:
+            " 'low' for dark, 'high' for red
+            let g:solarized_visibility = "normal"
+            let g:solarized_termcolors = 256
+            " let g:solarized_termcolors = 16
+            colorscheme solarized
+        else
+            set background=dark
+            colorscheme gruvbox
+        endif
+    " Cannot find color scheme: this may happen if colors are not installed
+    catch /E185:/
+        colorscheme slate
+    endtry
 else
     colorscheme slate
 endif
