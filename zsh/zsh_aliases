@@ -33,9 +33,13 @@ alias ghc-sandbox="ghc -no-user-package-db -package-db .cabal-sandbox/*-packages
 alias ghci-sandbox="ghci -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
 alias runhaskell-sandbox="runhaskell -no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
 
-function note_vim {
-d=$(date "+%Y%m%d").md
-vim $d
+function note {
+    local date=$(date "+%Y-%m-%d")
+    local file=$date.md
+    if [ ! -e $file ]; then
+        echo "# $date" >> $file
+    fi
+    vim $file
 }
 
 alias dim='docker images'
