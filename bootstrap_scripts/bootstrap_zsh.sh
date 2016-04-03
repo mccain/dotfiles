@@ -13,12 +13,13 @@ fi
 
 OMZ=$DOTFILES/extra/oh-my-zsh
 rm -rf $OMZ
-git clone https://github.com/robbyrussell/oh-my-zsh $OMZ
+git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh $OMZ
 
 Z=$DOTFILES/extra/z
 rm -rf $Z
-git clone https://github.com/rupa/z $Z
+git clone --depth 1 https://github.com/rupa/z $Z
 
 HIGHLIGHTING=$DOTFILES/extra/zsh-syntax-highlighting
 rm -rf $HIGHLIGHTING
-git clone https://github.com/zsh-users/zsh-syntax-highlighting $HIGHLIGHTING
+git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting \
+    $HIGHLIGHTING
