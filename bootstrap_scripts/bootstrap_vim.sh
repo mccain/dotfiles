@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-checkAndBackup $HOME/.vimrc
-checkAndBackup $HOME/.vim
-
-ln -sf $PWD/vim/vimrc $HOME/.vimrc
-ln -sf $PWD/vim $HOME/.vim
+backupAndLink $PWD/vim/vimrc $HOME/.vimrc
+backupAndLink $PWD/vim $HOME/.vim
 
 # Vim will not create the undos folder automatically
 mkdir -p $DOTFILES/vim/undos

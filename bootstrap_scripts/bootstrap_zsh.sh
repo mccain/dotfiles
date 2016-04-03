@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-checkAndBackup $HOME/.zshrc
-
-ln -sf $PWD/zsh/zshrc $HOME/.zshrc
+backupAndLink $PWD/zsh/zshrc $HOME/.zshrc
 
 mkdir -p $DOTFILES/extra
 # Create the file if it doesn't exist
