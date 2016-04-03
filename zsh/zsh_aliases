@@ -1,7 +1,10 @@
-alias ls='ls -G'
-alias grep='grep -G --color'
-alias fgrep='fgrep -G --color'
-alias egrep='egrep -G --color'
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU
+    colorflag="--color"
+else # OS X (BSD)
+    colorflag="-G"
+fi
+alias ls='ls $colorflag'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
