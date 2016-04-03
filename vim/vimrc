@@ -1,21 +1,30 @@
 " Plugins {
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'Raimondi/delimitMate'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'scrooloose/syntastic'
-Plug 'majutsushi/tagbar'
-Plug 'raichoo/haskell-vim'
-Plug 'kchmck/vim-coffee-script'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'nathanaelkane/vim-indent-guides'
-" Activate indent-guides with: <Leader>ig
+" Fast movement around the screen
+" <Leader><Leader>[bwfjk]
+Plug 'Lokaltog/vim-easymotion'
 Plug 'bling/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+" Align text
+" :Tab/S, where S is what to align
+" :Tab/S\zs, aligns ignoring S
 Plug 'godlygeek/tabular'
+" Show window with tags
+" :TagbarToggle (currently <F9> mapped to this)
+Plug 'majutsushi/tagbar'
+" Visually display indent levels
+" <Leader>ig
+Plug 'nathanaelkane/vim-indent-guides'
+" Syntax highlighting and indentation for Haskell and Cabal
+Plug 'raichoo/haskell-vim'
+" Syntax checking
+Plug 'scrooloose/syntastic'
+" Git wrapper
+Plug 'tpope/vim-fugitive'
+" Syntax, indent, and filetype plugin files for git
+Plug 'tpope/vim-git'
 
 " Colors
 Plug 'altercation/vim-colors-solarized'
