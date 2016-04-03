@@ -1,8 +1,10 @@
 # Vim
 vim/.netrwhist
-vim/bundle
 vim/undos
 vim/view
+# vim-plug
+vim/autoload
+vim/plugged
 
 # User's secret stuff
 extra

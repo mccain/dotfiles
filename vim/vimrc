@@ -1,35 +1,28 @@
-" Vundle {
-" Vundle setup (https://github.com/gmarik/Vundle.vim)
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Plugins {
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" My Bundles here:
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-surround'
-Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'Raimondi/delimitMate'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
-Plugin 'raichoo/haskell-vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-surround'
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'Raimondi/delimitMate'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'raichoo/haskell-vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'nathanaelkane/vim-indent-guides'
 " Activate indent-guides with: <Leader>ig
-Plugin 'bling/vim-airline'
-Plugin 'godlygeek/tabular'
+Plug 'bling/vim-airline'
+Plug 'godlygeek/tabular'
 
 " Colors
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'jnurmine/Zenburn'
-Plugin 'morhetz/gruvbox'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
+Plug 'jnurmine/Zenburn'
+Plug 'morhetz/gruvbox'
+Plug 'nanotech/jellybeans.vim'
+Plug 'tomasr/molokai'
 
 "" TODO: Look at...
 "" https://github.com/SirVer/ultisnips
@@ -37,18 +30,8 @@ Plugin 'tomasr/molokai'
 "" https://github.com/Valloric/YouCompleteMe
 "" https://github.com/eagletmt/neco-ghc
 
-" required!
-call vundle#end()
-filetype plugin indent on
-"
-" Brief help
-" :PluginList          - list configured bundles
-" :PluginInstall(!)    - install(update) bundles
-" :PluginSearch(!) foo - search(or refresh cache first) for foo
-" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" Add plugins to &runtimepath
+call plug#end()
 " }
 
 let useSolarized = 0

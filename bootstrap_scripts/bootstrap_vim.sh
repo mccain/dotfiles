@@ -8,11 +8,10 @@ ln -sf $PWD/vim $HOME/.vim
 
 # Vim will not create the undos folder automatically
 mkdir -p $DOTFILES/vim/undos
-mkdir -p $DOTFILES/vim/bundle
 
-Vundle=$DOTFILES/vim/bundle/Vundle.vim
-rm -rf $Vundle
-git clone https://github.com/gmarik/Vundle.vim.git $Vundle
+# Use vim-plug to manage Vim plugins
+curl -sfLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install the plugins found in vimrc
-vim +PluginInstall +qall
+vim +PlugInstall +qall
