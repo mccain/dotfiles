@@ -51,7 +51,7 @@ filetype plugin indent on
 " }
 
 let useSolarized = 0
-if $TERM == "xterm-256color" || &t_Co >= 256 || has("gui_running")
+if $TERM =~ '256color$' || &t_Co >= 256 || has("gui_running")
     map <silent> <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
     try
         if useSolarized
