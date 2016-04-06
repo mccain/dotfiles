@@ -102,6 +102,7 @@ set nocompatible " behave very Vi compatible (not advisable)
 set incsearch " show match for partly typed search command
 set ignorecase " ignore case when using a search pattern
 set smartcase " override 'ignorecase' when pattern has upper case characters
+vnoremap // y/<C-R>"<CR>
 " Keep search pattern at the center of the screen:
 " nnoremap <silent> n nzz
 " nnoremap <silent> N Nzz
