@@ -25,6 +25,10 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 " Syntax, indent, and filetype plugin files for git
 Plug 'tpope/vim-git'
+" View man page in vim
+" :Man command (horizontal split, also mapped to <leader>mm down in plugin opts)
+" :Vman command (vertical split, also mapped to <leader>mv down in plugin opts)
+Plug 'vim-utils/vim-man'
 
 " Colors
 Plug 'altercation/vim-colors-solarized'
@@ -236,6 +240,10 @@ set viewoptions=folds,cursor
         let g:LatexBox_quickfix = 2
         let g:LatexBox_viewer="open -a /Applications/Skim.app"
         nmap <leader>L :LatexErrors<CR>
+    " }
+    " vim-utils/vim-man {
+        nmap <leader>mm <Plug>(Man)
+        nmap <leader>mv <Plug>(Vman)
     " }
 " }
 
