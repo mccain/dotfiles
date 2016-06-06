@@ -21,6 +21,11 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'raichoo/haskell-vim'
 " Syntax checking
 Plug 'scrooloose/syntastic'
+" Tmux syntax highlighting
+" K jumps to word in tmux man
+" g! executes lines as tmux commands
+" :make invokes tmux source .tmux.conf and places errors in quicklist
+Plug 'tmux-plugins/vim-tmux'
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 " Syntax, indent, and filetype plugin files for git
