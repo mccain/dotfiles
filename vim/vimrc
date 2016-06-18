@@ -254,4 +254,4 @@ set viewoptions=folds,cursor
     " }
 " }
 
-" vim: foldmethod=marker foldlevel=0 foldmarker={,}
+" vim: foldmethod=marker foldlevel=1 foldmarker={,}
