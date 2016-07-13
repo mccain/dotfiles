@@ -204,6 +204,7 @@ noremap Q <Nop>
 " }
 " 20. Command line editing {
 set wildmenu " command-line completion shows a list of matches
+set wildmode=longest:full,full
 set wildchar=<TAB> " key that triggers command-line expansion
 " List of patterns to ignore files for file name completion
 set wildignore=*.o,*.core,*~,core,*.swp,#*#,*.beam
