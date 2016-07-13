@@ -25,8 +25,10 @@ autoload -U colors && colors
 # For autocompletion with an arrow-key driven interface:
 zstyle ':completion:*' menu select
 
-# For autocompletion of command line switches for aliases
-setopt completealiases
+# Allow alias internal substitution before completion is attempted
+# Thus, the alias and the command are not distinct commands for completion
+# purposes
+unsetopt completealiases
 
 # Other configuration
 export EDITOR="vim"
