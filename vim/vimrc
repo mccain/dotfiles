@@ -35,6 +35,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 " Syntax, indent, and filetype plugin files for git
 Plug 'tpope/vim-git'
+" Erlang dev
+Plug 'vim-erlang/vim-erlang-omnicomplete'
+Plug 'vim-erlang/vim-erlang-tags'
 " View man page in vim
 " :Man command (horizontal split, also mapped to <leader>mm down in plugin opts)
 " :Vman command (vertical split, also mapped to <leader>mv down in plugin opts)
