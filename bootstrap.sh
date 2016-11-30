@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-wantedDotfiles=(git vim zsh)
+wantedDotfiles=(git vim zsh tmux)
 
 export DOTFILES=`dirname ${BASH_SOURCE}`
 
