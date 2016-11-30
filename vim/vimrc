@@ -19,6 +19,9 @@ Plug 'majutsushi/tagbar'
 Plug 'nathanaelkane/vim-indent-guides'
 " Syntax highlighting and indentation for Haskell and Cabal
 Plug 'raichoo/haskell-vim'
+" Tree explore
+" :NERDTreeToggle (currently C-n mapped to this)
+Plug 'scrooloose/nerdtree'
 " Syntax checking
 Plug 'scrooloose/syntastic'
 " Tmux syntax highlighting
@@ -229,6 +232,9 @@ set viewoptions=folds,cursor
 " Plugin options {
     " tpope/vim-fugitive {
         nmap <leader>g :Gstatus<CR>
+    " }
+    " scrooloose/nerdtree {
+        map <C-n> :NERDTreeToggle<CR>
     " }
     " scrooloose/syntastic {
         let g:syntastic_always_populate_loc_list = 1
