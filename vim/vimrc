@@ -201,6 +201,8 @@ cmap w!! w !sudo tee % >/dev/null
 nmap <leader>l :set list!<CR>
 nmap <leader>n :nohlsearch<CR>
 nmap <silent> <leader>c :syntax sync fromstart<CR>
+" Copy and paste to system clipboard
+vmap <Leader>y "+y
 " Avoid entering in ExMode
 noremap Q <Nop>
 " }
