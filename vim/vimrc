@@ -11,6 +11,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 " :Tab/S, where S is what to align
 " :Tab/S\zs, aligns ignoring S
 Plug 'godlygeek/tabular'
+" Fuzzy finding using FZF
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 " Show window with tags
 " :TagbarToggle (currently <F9> mapped to this)
 Plug 'majutsushi/tagbar'
@@ -235,6 +238,10 @@ set viewoptions=folds,cursor
 " }
 
 " Plugin options {
+    " junegunn/fzf.vim {
+        nnoremap <silent> <leader><leader>p :Files<CR>
+        nnoremap <silent> <leader><leader>t :Tags<CR>
+    " }
     " tpope/vim-fugitive {
         nmap <leader>g :Gstatus<CR>
     " }

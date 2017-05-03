@@ -51,3 +51,8 @@ source $CONFIG/zsh_aliases
 source $HOME/dotfiles/extra/zsh_extra
 source $HOME/dotfiles/extra/z/z.sh
 source $HOME/dotfiles/extra/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Do not use fzf's ctrl+r command
+bindkey '^R' history-incremental-search-backward

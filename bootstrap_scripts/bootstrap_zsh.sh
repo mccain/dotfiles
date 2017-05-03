@@ -9,6 +9,11 @@ if [[ ! -e $ZSH_EXTRA ]]; then
     touch $ZSH_EXTRA
 fi
 
+FZF=$DOTFILES/extra/fzf
+rm -rf $FZF
+git clone --depth 1 https://github.com/junegunn/fzf $FZF
+$FZF/install --all --no-completion
+
 OMZ=$DOTFILES/extra/oh-my-zsh
 rm -rf $OMZ
 git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh $OMZ
