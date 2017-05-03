@@ -1,6 +1,9 @@
 " Plugins {
 call plug#begin('~/.vim/plugged')
 
+" Show git diffs and navigate through hunks (currently not activated)
+" Toggle with :GitGutterToggle
+Plug 'airblade/vim-gitgutter'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 " Fast movement around the screen
 " <Leader><Leader>[bwfjk]
@@ -238,6 +241,9 @@ set viewoptions=folds,cursor
 " }
 
 " Plugin options {
+    " airblade/vim-gitgutter {
+        let g:gitgutter_map_keys = 0
+    " }
     " junegunn/fzf.vim {
         nnoremap <silent> <leader><leader>p :Files<CR>
         nnoremap <silent> <leader><leader>t :Tags<CR>
