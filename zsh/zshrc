@@ -54,5 +54,5 @@ source $HOME/dotfiles/extra/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Do not use fzf's ctrl+r command
-bindkey '^R' history-incremental-search-backward
+# To not use fzf's ctrl+r command, uncomment the following
+# bindkey '^R' history-incremental-search-backward
