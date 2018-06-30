@@ -22,8 +22,8 @@ pushd $DOTFILES > /dev/null
 
 for df in ${wantedDotfiles[*]}
 do
-    echo "Preparing $df!"
-    source bootstrap_scripts/bootstrap_${df}.sh
+    echo ">>> Preparing $df!"
+    source dotfile_scripts/${df}.sh
 done
 
 popd > /dev/null
