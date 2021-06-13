@@ -10,9 +10,14 @@
     tool = vimdiff
 [alias]
     a = add
+    ap = add -p
+    b = branch
     ci = commit
     co = checkout
-    df = diff
+    d = diff
+    ds = diff --staged
+    f = fetch
+    g = grep
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
     st = status
     tl = tag --sort "v:refname"
