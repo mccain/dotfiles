@@ -37,6 +37,8 @@ Plug 'scrooloose/syntastic'
 Plug 'tmux-plugins/vim-tmux'
 " Fast commenting with gc (for a single line, gcc)
 Plug 'tpope/vim-commentary'
+" Obsessive session keeping
+Plug 'tpope/vim-obsession'
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 " Syntax, indent, and filetype plugin files for git
