@@ -3,7 +3,7 @@
 [color]
     ui = true
 [color "diff"]
-    meta = blue
+    meta = blue bold
 [push]
     default = simple
 [merge]
