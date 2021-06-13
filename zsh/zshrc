@@ -36,7 +36,7 @@ export SVN_EDITOR="vim"
 export GIT_EDITOR="vim"
 export VIMRC="$HOME/.vimrc"
 bindkey -e
-umask 0077
+umask 0022
 
 # Prompt configuration
 source $CONFIG/zsh_prompt
