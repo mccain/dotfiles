@@ -140,8 +140,10 @@ vnoremap // y/<C-R>"<CR>
 " }
 "  4. Displaying text {
 set number " show the line number for each line
-set scrolloff=2 "number of screen lines to show around the cursor
+set scrolloff=3 "number of screen lines to show around the cursor
 set listchars=tab:▸\ ,trail:·,eol:¬
+set cursorline
+set cursorlineopt=number
 " }
 "  5. Syntax, highlighting and spelling {
 syntax on
