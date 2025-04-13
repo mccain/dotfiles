@@ -95,23 +95,66 @@ vim.g.have_nerd_font = false
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+-- The sections used are those from `:options`
 
--- Make line numbers default
-vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+-- [[ 1 important ]]
+vim.opt.compatible = false -- Disable Vi compatibility
 
--- Disable the mouse
-vim.opt.mouse = ''
--- Enable mouse mode, can be useful for resizing splits for example!
--- vim.opt.mouse = 'a'
+-- [[ 2 moving around, searching and patterns ]]
+vim.opt.incsearch = true -- show match for partly typed search command
+vim.opt.ignorecase = true -- ignore case when using a search pattern
+vim.opt.smartcase = true -- override 'ignorecase' when pattern has upper case characters
+vim.keymap.set('v', '//', 'y/<C-R>"<CR>')
+vim.opt.inccommand = 'split' -- Preview substitutions live, as you type
 
+-- [[ 3 tags ]]
+
+-- [[ 4 displaying text ]]
+vim.opt.number = true -- show the line number for each line
+-- vim.opt.relativenumber = true -- TODO: Consider this option
+vim.opt.scrolloff = 3 --number of screen lines to show around the cursor
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
+vim.opt.breakindent = true
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- TODO: consider eol = '¬'
+
+-- [[ 5 syntax, highlighting and spelling ]]
+vim.opt.hlsearch = true -- highlight all matches for the last used search pattern
+vim.opt.colorcolumn = '80' -- show a column at the 80th char
+
+-- [[ 6 multiple windows ]]
+-- Make the status bar always visible
+-- 0, 1, 2 or 3; when to use a status line for the last window
+-- 2: Show a status line, even if there's only one Vim window
+vim.opt.laststatus = 2
+vim.opt.splitbelow = true -- New windows below the current one
+vim.opt.splitright = true -- New windows to the right of the current one
+
+-- [[ 7 multiple tab pages ]]
+
+-- [[ 8 terminal ]]
+
+-- [[ 9 using the mouse ]]
+vim.opt.mouse = '' -- Disable the mouse
+
+-- [[ 10 messages and info ]]
+vim.opt.showcmd = true -- show (partial) command keys in the status line
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
+vim.opt.ruler = true -- show cursor position below each window
+vim.opt.visualbell = true -- use a visual bell instead of beeping
+-- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- instead raise a dialog asking if you wish to save the current file(s)
+-- See `:help 'confirm'`
+vim.opt.confirm = true
 
+-- [[ 11 selecting text ]]
+vim.opt.backspace = 'indent,eol,start' -- value=2 in vim. Default behavior in Nvim
 -- -- Sync clipboard between OS and Neovim.
 -- --  Schedule the setting after `UiEnter` because it can increase startup-time.
 -- --  Remove this option if you want your OS clipboard to remain independent.
@@ -120,58 +163,33 @@ vim.opt.showmode = false
 --   vim.opt.clipboard = 'unnamedplus'
 -- end)
 
--- Enable break indent
-vim.opt.breakindent = true
+-- [[ 12 editing text ]]
+vim.opt.textwidth = 80 -- line length above which to break a line
+vim.opt.joinspaces = false -- We don't want two spaces after periods when joining lines
 
--- Save undo history
-vim.opt.undofile = true
+-- [[ 13 tabs and indenting ]]
+vim.opt.tabstop = 2 -- number of spaces a <Tab> in the text stands for
+vim.opt.shiftwidth = 2 -- number of spaces used for each step of (auto)indent
+vim.opt.autoindent = true -- automatically set the indent of a new line
+vim.opt.showmatch = true -- when inserting a bracket, briefly jump to its match
+vim.opt.expandtab = true -- expand <Tab> to spaces in Insert mode
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+-- [[ 14 folding ]]
+vim.opt.foldcolumn = '1'
+vim.opt.foldmethod = 'manual' -- Manually insert folds
 
--- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+-- [[ 15 diff mode ]]
 
--- Decrease update time
-vim.opt.updatetime = 250
-
+-- [[ 16 mapping ]]
 -- Decrease mapped sequence wait time
 vim.opt.timeoutlen = 300
 
--- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
--- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
--- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '¬' }
-
--- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
-
--- Show which line your cursor is on
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = 'number'
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 3
-
--- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
--- instead raise a dialog asking if you wish to save the current file(s)
--- See `:help 'confirm'`
-vim.opt.confirm = true
-
--- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
-
--- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights on search when pressing <Esc> in normal mode' })
+vim.keymap.set('n', '<leader>n', '<cmd>nohlsearch<CR>h', { desc = 'Clear highlights on search' })
+vim.keymap.set('n', '<leader>c', ':syntax sync fromstart<CR>', { silent = true })
+vim.keymap.set('v', '<leader>y', '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set('n', 'Q', '<nop>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -203,6 +221,45 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
 -- vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
 -- vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
+
+-- TODO: Other ideas to explore
+-- vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'Keep mouse in the same position when joining lines' })
+-- vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Keep search result in the middle of the screen' })
+-- vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Keep search result in the middle of the screen' })
+-- vim.keymap.set(
+--   'x',
+--   '<leader>p',
+--   '"_dP',
+--   { desc = 'Delete a highlighted word into the void register, then paste. Helps not copy the replaced word into the register' }
+-- )
+
+-- [[ 17 reading and writing files ]]
+
+-- [[ 18 the swap file ]]
+-- Decrease update time
+vim.opt.updatetime = 250
+
+-- [[ 19 command line editing ]]
+vim.opt.wildmenu = true --" command-line completion shows a list of matches
+vim.opt.wildmode = 'longest:full,full'
+vim.opt.wildchar = 9 -- Set <Tab> as key that triggers command-line expansion
+-- List of patterns to ignore files for file name completion
+vim.opt.wildignore = '*.o,*.core,*~,core,*.swp,#*#,*.beam'
+vim.opt.undofile = true -- automatically save and restore undo history
+-- set undodir=~/.vim/undos -- To not conflict with vimrc, the default for now (~/.local/state/nvim/undo/)
+
+-- [[ 20 executing external commands ]]
+
+-- [[ 21 running make and jumping to errors (quickfix) ]]
+
+-- [[ 22 language specific ]]
+
+-- [[ 23 multi-byte characters ]]
+
+-- [[ 24 various ]]
+vim.opt.viewoptions = 'folds,cursor,curdir'
+-- Keep signcolumn on by default
+vim.opt.signcolumn = 'yes'
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
