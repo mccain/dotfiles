@@ -243,6 +243,7 @@ set undodir=~/.vim/undos
 " List of words that specifies what to save for :mkview
 " set viewoptions=folds,options,cursor " <~ default
 set viewoptions=folds,cursor
+set cursorline
 " }
 " }
 
@@ -251,6 +252,7 @@ set viewoptions=folds,cursor
         let g:gitgutter_map_keys = 0
     " }
     " junegunn/fzf.vim {
+        nnoremap <silent> <leader><leader>b :Buffers<CR>
         nnoremap <silent> <leader><leader>p :Files<CR>
         nnoremap <silent> <leader><leader>t :Tags<CR>
     " }
