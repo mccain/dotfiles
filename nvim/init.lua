@@ -7,6 +7,9 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+-- Don't force default space or tab rules on markdown files
+vim.g.markdown_recommended_style = 0
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- The sections used are those from `:options`
@@ -963,7 +966,13 @@ require('lazy').setup({
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true, disable = { 'ruby' } },
+      indent = {
+        enable = true,
+        disable = {
+          'ruby',
+          'markdown', -- indentation at bullet points is worse
+        }
+      },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:

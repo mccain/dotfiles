@@ -98,6 +98,7 @@ endif
 
 " Markdown!
 au BufRead,BufNewFile *.md set filetype=markdown
+let markdown_recommended_style=0 " Don't force space or tab rules
 
 if has("autocmd")
     " Automatically save and show view (for folds, e.g.).
