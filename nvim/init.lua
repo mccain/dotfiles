@@ -216,7 +216,13 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  {
+    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+    config = function()
+      -- Stop manually overwriting shiftwidth=2
+      vim.g.sleuth_markdown_heuristics = false
+    end,
+  },
   'tpope/vim-fugitive', -- Git wrapper
   'tpope/vim-obsession', -- Obsessive session keeping
 
