@@ -225,6 +225,14 @@ require('lazy').setup({
   },
   'tpope/vim-fugitive', -- Git wrapper
   'tpope/vim-obsession', -- Obsessive session keeping
+  { -- Replaces 'tpope/vim-commentary' from vimrc
+    'numToStr/Comment.nvim', -- Commenting plugin
+    config = function()
+      require("Comment").setup({
+        ignore = '^$',
+      })
+    end,
+  },
 
   { -- Replaces 'nathanaelkane/vim-indent-guides' from vimrc
     'lukas-reineke/indent-blankline.nvim',
