@@ -1,12 +1,21 @@
+[branch]
+    sort = -committerdate
 [core]
     excludesfile = ~/.gitignore
+[commit]
+    verbose = true
 [color]
     ui = true
 [color "diff"]
     meta = blue bold
+[diff]
+    algorithm = histogram
+    colorMoved = plain
 [push]
+    autoSetupRemote = true
     default = simple
 [merge]
+    conflictstyle = zdiff3
     tool = vimdiff
 [alias]
     a = add
@@ -24,3 +33,8 @@
     undo-commit = reset --soft 'HEAD^'
 [include]
     path = ~/dotfiles/extra/gitconfig_extra
+[init]
+    defaultBranch = main
+[rerere]
+    autoupdate = true
+    enabled = true
