@@ -2,6 +2,11 @@
 
 wantedDotfiles=(git vim zsh tmux)
 
+# Use CLI args if provided, otherwise fall back to the full default set
+if [[ $# -gt 0 ]]; then
+    wantedDotfiles=("$@")
+fi
+
 export DOTFILES=`dirname ${BASH_SOURCE}`
 
 function backupAndLink() {
