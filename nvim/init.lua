@@ -106,6 +106,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights o
 vim.keymap.set('n', '<leader>n', '<cmd>nohlsearch<CR>h', { desc = 'Clear highlights on search' })
 vim.keymap.set('n', '<leader>c', ':syntax sync fromstart<CR>', { silent = true })
 vim.keymap.set('v', '<leader>y', '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set('n', '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set('n', 'Q', '<nop>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
