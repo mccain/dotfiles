@@ -229,9 +229,9 @@ require('lazy').setup({
   { -- Replaces 'tpope/vim-commentary' from vimrc
     'numToStr/Comment.nvim', -- Commenting plugin
     config = function()
-      require("Comment").setup({
+      require('Comment').setup {
         ignore = '^$',
-      })
+      }
     end,
   },
 
@@ -421,10 +421,10 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', function ()
+      vim.keymap.set('n', '<leader>sf', function()
         builtin.find_files {
           hidden = true,
-          find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" }
+          find_command = { 'rg', '--files', '--hidden', '--glob', '!.git/*' },
         }
       end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
@@ -432,7 +432,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sg', function()
         builtin.live_grep {
           hidden = true,
-          find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" }
+          find_command = { 'rg', '--files', '--hidden', '--glob', '!.git/*' },
         }
       end, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
@@ -989,7 +989,7 @@ require('lazy').setup({
         disable = {
           'ruby',
           'markdown', -- indentation at bullet points is worse
-        }
+        },
       },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
